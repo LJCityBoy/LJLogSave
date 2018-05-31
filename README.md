@@ -1,0 +1,2 @@
+# LJLogSave
+nodejs写的基于mongodb的转存系统日志的小系统
