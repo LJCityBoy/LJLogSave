@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日志管理</title>
+    <link rel="stylesheet" type="text/css" href="../public/style.css">
+    <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+
+</head>
+<body>
+<header>
+    <h2>日志管理</h2>
+</header>
+<main>
+    <aside>
+        <ul id="index-ul">
+            <li style="border-top: solid 1px white;" class="index-li"><a href="/" >导入日志</a></li>
+            <li id="checklog" class="index-li">
+                <a href="javascript:;">查看日志</a>
+                <ul class="dropdown">
+                    <li><a href="/check">查看</a></li>
+                    <!--<li><a href="/checkBy">条件查看</a></li>-->
+                </ul>
+            </li>
+        </ul>
+    </aside>
+    <div id="main-page">
+        {% block main %}
+
+        {% endblock %}
+    </div>
+
+</main>
+
+
+
+<script type="text/javascript">
+    $('.dropdown').hide();
+    $('#checklog').hover(function () {
+        $(this).find('.dropdown').show(400);
+    },function () {
+        $(this).find('.dropdown').hide(400);
+    });
+
+</script>
+
+
+</body>
+</html>

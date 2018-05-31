@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看全部</title>
+    <script type="text/javascript" src="../public/jquery-3.3.1.min.js"></script>
+    <style type="text/css">
+        tr{
+            text-align: center;
+        }
+        th{
+            width: 120px;
+        }
+        .selected{
+            background-color: #7FFFD4;
+        }
+    </style>
+</head>
+<body>
+{% extends 'layout.html' %}
+
+{% block main %}
+<form method="post" action="/checkBy">
+    <label for="system">请选择系统(必选):</label>
+    <input type="text" id="system" name="system"/>
+    &nbsp;<label for="type">类型</label>
+    <input type="text" id="type" name="type"/>
+    &nbsp;<label for="date">时间</label>
+    <input type="text" id="date"  name="date"/>
+    <button type="submit" id="subbt" onclick="checkby(this.form)" >查询</button>
+</form>
+
+<table id="heckAll-table">
+    <thead>
+    <tr>
+        <th>系统</th>
+        <th>消息类型</th>
+        <th>时间</th>
+        <th>其他</th>
+        <th>id</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for dict in data %}
+    <tr class="child_row_01">
+        <th>{{dict.system}}</th>
+        <th>{{dict.type}}</th>
+        <th>{{dict.date}}</th>
+        <th>{{dict.other}}</th>
+        <th>{{dict._id.toString()}}</th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+<script type="text/javascript">
+
+    function checkby(form) {
+        if (form.system.value == ""){
+            alert("请选择系统！");
+            return false;
+        }
+        else if(form.system.value){
+           document.getElementById("heckAll-table").hidden = false;
+        }
+
+    }
+
+</script>
+
+{% endblock %}
+
+</body>
+</html>

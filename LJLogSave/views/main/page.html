@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page</title>
+    <link rel="stylesheet" type="text/css" href="../public/style.css">
+</head>
+<body>
+
+
+{% block main %}
+<p class="table-info">一共有<span>{{count}}</span>条数据，每页显示<span>{{limit}}</span>条。</p>
+
+<ul class="page-btn">
+    {% if Number(page)-1!==0 %}
+    <li><a href="/{{type}}?page={{Number(page)-1}}">上一页</a></li>
+    {% else %}
+    <li>已是第一页</li>
+    {% endif %}
+    {% if Number(page)+1<=pages %}
+    <li><a href="/{{type}}?page={{Number(page)+1}}">下一页</a></li>
+    {% else %}
+    <li>已是最后一页</li>
+    {% endif %}
+    <li>当前第{{page}}页</li>
+</ul>
+{% endblock %}
+</body>
+</html>
